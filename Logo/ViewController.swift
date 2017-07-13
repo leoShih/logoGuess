@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
    //題目圖片
     @IBOutlet  var imageView_1: Array<UIImageView>? //image Array
+    @IBOutlet  var BtnImage: Array<UIButton>?
     
     
    
@@ -53,6 +54,7 @@ class ViewController: UIViewController {
 
     ]
   
+    /*
     func imageRandom() {
     
         //for-in 在imageView_1的Array之間
@@ -65,13 +67,27 @@ class ViewController: UIViewController {
             logoArray.remove(at: index)
             //產生亂數圖片
             a.image = randomnumber
-            
-           
+     
         }
-       
     }
-   
+    */
     
+    func BtnimageRandom() {
+        
+        //for-in 在imageView_1的Array之間
+        for btn in BtnImage! {
+            
+            let index = Int(arc4random_uniform(UInt32(logoArray.count)))
+            let randomnumber = logoArray[index].queImage
+            
+            //移除重複
+            logoArray.remove(at: index)
+            //在Btn的background產生亂數圖片
+            btn.setImage(randomnumber?.withRenderingMode(.alwaysOriginal), for: .normal)
+            btn.imageView?.contentMode = .scaleAspectFit
+        }
+        
+    }
     
     
     
@@ -80,7 +96,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
      
-        imageRandom()
+       BtnimageRandom()
+        
        
         // Do any additional setup after loading the view, typically from a nib.
     }

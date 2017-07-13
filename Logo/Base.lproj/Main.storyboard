@@ -104,6 +104,12 @@
                         <outletCollection property="imageView_1" destination="RWJ-Td-XtW" collectionClass="NSMutableArray" id="362-c5-g62"/>
                         <outletCollection property="imageView_1" destination="R09-3e-vph" collectionClass="NSMutableArray" id="Xa0-Wa-vxP"/>
                         <outletCollection property="imageView_1" destination="PB2-F5-UWU" collectionClass="NSMutableArray" id="vhv-Q0-31H"/>
+                        <outletCollection property="BtnImage" destination="b25-hz-XN3" collectionClass="NSMutableArray" id="Q1I-wI-3zC"/>
+                        <outletCollection property="BtnImage" destination="zPb-9M-9mi" collectionClass="NSMutableArray" id="fBx-yk-w1t"/>
+                        <outletCollection property="BtnImage" destination="WYm-zb-vR5" collectionClass="NSMutableArray" id="xPu-BR-QIm"/>
+                        <outletCollection property="BtnImage" destination="vcA-zC-Z8e" collectionClass="NSMutableArray" id="us9-dJ-s6j"/>
+                        <outletCollection property="BtnImage" destination="CZZ-c9-dld" collectionClass="NSMutableArray" id="dY1-uA-8cO"/>
+                        <outletCollection property="BtnImage" destination="WgO-io-PZ5" collectionClass="NSMutableArray" id="Ae3-zM-JHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -186,6 +192,6 @@
         <image name="Audi" width="2272" height="768"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Erd-mw-KMJ"/>
+        <segue reference="uDw-nQ-Kh8"/>
     </inferredMetricsTieBreakers>
 </document>
