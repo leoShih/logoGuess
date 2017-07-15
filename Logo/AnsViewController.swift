@@ -8,18 +8,35 @@
 
 import UIKit
 
+protocol DataEnterDelegate:class {
+    func userDidEnterInfo(info:String)
+}
+
 class AnsViewController: UIViewController {
     
     
     @IBOutlet weak var selectImage: UIImageView!
     
+    @IBOutlet weak var dataTextField1: UITextField!
+    
+    weak var delegate:DataEnterDelegate? = nil
+    
+    @IBAction func sendDataBtn(_ sender: Any) {
+        
+        delegate?.userDidEnterInfo(info: dataTextField1.text!)
+        
+        // go back to the previous view controller
+        self.navigationController?.popViewController(animated: true)
+    }
+   
+    
     var image : UIImage!
-    var imageName : String!
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         selectImage.image = image
+        
         // Do any additional setup after loading the view.
     }
 

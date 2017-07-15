@@ -8,15 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DataEnterDelegate {
 
    //題目圖片
     @IBOutlet  var imageView_1: Array<UIImageView>? //image Array
     @IBOutlet  var BtnImage: Array<UIButton>?
     
+    @IBOutlet weak var Btn_image1: UIButton!
+    @IBOutlet weak var Btn_image2: UIButton!
+    @IBOutlet weak var Btn_image3: UIButton!
+    @IBOutlet weak var Btn_image4: UIButton!
+    @IBOutlet weak var Btn_image5: UIButton!
+    @IBOutlet weak var Btn_image6: UIButton!
+   
+   //回傳答案的Lalel
+    @IBOutlet weak var dataLb_1: UILabel!
+    @IBOutlet weak var dataLb_2: UILabel!
+    @IBOutlet weak var dataLb_3: UILabel!
+    @IBOutlet weak var dataLb_4: UILabel!
+    @IBOutlet weak var dataLb_5: UILabel!
+    @IBOutlet weak var dataLb_6: UILabel!
+    
+    
+    var index = 0
     
    
-      
+    func userDidEnterInfo(info: String) {
+        dataLb_1.text = info
+    }
+    
     //問答題array 種類
     struct Qa {
         
@@ -60,7 +80,7 @@ class ViewController: UIViewController {
         //for-in 在imageView_1的Array之間
         for a in imageView_1! {
             
-            let index = Int(arc4random_uniform(UInt32(logoArray.count)))
+            index = Int(arc4random_uniform(UInt32(logoArray.count)))
             let randomnumber = logoArray[index].queImage
             
             //移除重複
@@ -72,34 +92,33 @@ class ViewController: UIViewController {
     }
     */
     
-    func BtnimageRandom() {
+    
         
+    
+    
+    func BtnimageRandom() {
+       
         //for-in 在imageView_1的Array之間
         for btn in BtnImage! {
             
-            let index = Int(arc4random_uniform(UInt32(logoArray.count)))
-            let randomnumber = logoArray[index].queImage
+            index = Int(arc4random_uniform(UInt32(logoArray.count)))
+             let randomnumber = logoArray[index].queImage
             
             //移除重複
             logoArray.remove(at: index)
             //在Btn的background產生亂數圖片
             btn.setImage(randomnumber?.withRenderingMode(.alwaysOriginal), for: .normal)
             btn.imageView?.contentMode = .scaleAspectFit
+        
         }
         
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
        BtnimageRandom()
         
-       
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,19 +127,24 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+
+        //viewControllers是Array, 當切換頁面是會生成不同的array, 在NavigationController後的viewController為第一個
+    let controller = segue.destination as! AnsViewController
+
+        controller.image =  Btn_image1.imageView!.image
         
-    //因為storyboard有NavigationController
-    let navControllers = segue.destination as! UINavigationController
-    
-    //viewControllers是Array, 當切換頁面是會生成不同的array, 在NavigationController後的viewController為第一個
-    let controller = navControllers.viewControllers.first as! AnsViewController
- 
-      
-       
+       if segue.identifier == "showAns1"{
         
-       
+        let AnsView = segue.destination as! AnsViewController
+        AnsView.delegate = self
+        }
+        
+    func userDidEnterInformation(info: String) {
+        
+        dataLb_1.text = info
+
+    }
+
 
 }
-
 }
